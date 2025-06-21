@@ -17,8 +17,9 @@ async def main():
     
 asyncio.run(main())
 
-### LET'S CREATE A REAL LIFE EXAMPLE WHERE THIS IS USEFUL, LET'S SAY WE ORDER SOMETHING ON AMAZON ###
-### 1. We first check if the object is available, ###
-### 2. The user enters payment details ### 
-### 3. You verify if the payment is successful ### 
-### 4. You confirm the order. ###
+### LET'S CREATE A REAL LIFE EXAMPLE WHERE THIS IS USEFUL, THE USER CLICKS "PAY" ON OUR E-COMMERCE APP CALLED ILARA ###
+### 1. We first send a payment request, ###
+### 2. Wait for confirmation from a payment gateway whether paychangu, mobipay or others ### 
+### 3. Return the confirmation message to the user ### 
+
+# Sending a payment request
