@@ -4,6 +4,12 @@ In Python, any function defined with *async def* is a coroutine function, and wh
 """
 
 import asyncio
+from datetime import datetime
+
+
+# Current time
+def get_time(): 
+    return datetime.now().strftime("%H:%M:%S.%f")[:-3] # This function returns the current time in HH:MM:SS.mmm format.
 
 ##### Let's first try to create a normal function.
 def normal_function():
@@ -24,11 +30,11 @@ async def say_after(duration, message): #The coroutine function takes two parame
     print(message) # After the sleep, it prints the message.
     
 async def main():
-    print("Started....")
+    print(f"Started at {get_time()}")
     await say_after(1, "Hello")  # This line calls the say_after coroutine with a 1-second delay and the message "Hello".
     await say_after(2, "World")  # This line calls the say_after coroutine with a 2-second delay and the message "World".
-    print("Finished....")  # This line prints "Finished" after both say_after calls
-    
+    print(f"Finished at {get_time()}")  # This line prints "Finished" after both say_after calls
+
 asyncio.run(main())  # This line runs the main coroutine, which in turn runs the say_after coroutines sequentially.
 
 
