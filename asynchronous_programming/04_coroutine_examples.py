@@ -40,3 +40,45 @@ async def modified_main():
     
 asyncio.run(modified_main())
 
+#You still don't believe me. Let's try the synchronous one.
+
+async def send_email_sync():
+    print("#################################### SYNCHRONOUS EMAIL SENDING ####################################")
+    print(f"Starting the email system at {get_time()}...")
+    initial_time = datetime.now()
+    
+    first_task = send_email("john@gmail.com", 2)
+    second_task = send_email("doe@gmail.com", 2)
+    third_task = send_email("hope@gmail.com", 2)
+    
+    await first_task
+    await second_task
+    await third_task
+    
+    final_time = datetime.now()
+    print(f"📨 Finished all emails at {get_time()}")
+    print(f"⏱ Time taken: {time_taken(initial_time, final_time)} seconds") # This will take around 6 seconds to complete, because it is synchronous.
+
+asyncio.run(send_email_sync())
+
+async def modern_main():
+    print(f"Starting the modern email system at {get_time()}")
+    initial_time = datetime.now()
+    
+    async with asyncio.TaskGroup() as tg:
+        tg.create_task(send_email("john@gmail.com", 2))
+        tg.create_task(send_email("doe@gmail.com", 2))
+        tg.create_task(send_email("hope@gmail.com", 2))
+        
+    final_time = datetime.now()
+    print(f"📨 Finished all emails at {get_time()}")
+    print(f"⏱ Time taken: {time_taken(initial_time, final_time)} seconds") # This will take around 2 seconds to complete, because it is using TaskGroup.
+
+asyncio.run(modern_main())
+
+#YOU MUST BE WONDERING BY NOW THAT ASYNCIO.CREATE_TASK AND ASYNCIO.TASKGROUP ARE THE SAME THING. WHY HAVE THEM BOTH
+"""
+REAL WORLD ANOLOGY
+create_task() is like manual gears in a car: more control, but you must know what you're doing.
+TaskGroup() is like an automatic gearbox: safer, easier, but less flexible when things get complex.    
+"""
