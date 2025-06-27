@@ -96,8 +96,6 @@ print("_________________________________________")
 
 
 
-
-
 fruits = ["apple", "orange", "kiwi"]
 iter_obj = iter(fruits)
 while True:
