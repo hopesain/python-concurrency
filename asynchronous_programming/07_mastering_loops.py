@@ -94,8 +94,51 @@ print("_________________________________________")
 
 
 
+#### LOOP CONTROL STATEMNTS IN PYTHON ####
+"""
+Most times you would want to control the flow of your loop. We can use the control statements described below to achieve that purpose.
+"""
+
+### Break Statement ###
+"""
+The break statement is used to exit a loop early, before the loop condition is False. 
+When the break statement is encountered inside a loop, 
+the loop is immediately terminated and 
+the program continues to execute the next line of code after the loop.
+"""
+
+### first example of a break statement ###
+
+count = 0
+while count < 10:
+    if count == 5:
+        break  # This exits the loop when count is equal to 5.
+    print(count)  # This prints the current value of count.
+    count += 1  # This increases the value of count by 1 in each iteration.
+print("Loop exited early due to break statement.")
+print("_________________________________________")
+
+### secnd example of a break statement ###
+for letter in 'geeksforgeeks':
+    if letter == 'e' or letter == 's':
+        break
+print('Current Letter :', letter)
+print("_________________________________________")
+
+### Continue Statement ###
+"""
+The continue statement is used to skip the current iteration of a loop and move to the next iteration. 
+It is useful when we want to bypass certain conditions without terminating the loop.
+"""
+### first example of a continue statement ###
+for letter in 'geekforgeeks':
+    if letter == "e" or letter == "s":
+        continue
+    print('Current Letter :', letter)  # This prints the current letter unless it is 'e' or 's'.
+print("_________________________________________")
 
 
+### HOW PYTHON HANDLES LOOPS UNDER THE HOOD ###
 fruits = ["apple", "orange", "kiwi"]
 iter_obj = iter(fruits)
 while True:
