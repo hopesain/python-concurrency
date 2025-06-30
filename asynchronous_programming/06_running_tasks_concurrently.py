@@ -36,7 +36,7 @@ Instead of cooking them one after another, we’ll use asyncio.gather() to switc
 
 async def cook_dish(dish_name, steps):
     print(f"Starting to prepare {dish_name} at {get_time()}")
-    for i in range(1, steps + 1):
+    for i in range(1, steps + 1): #Kindly visit the mastering loops section to understand the range function and loops in general.
         print(f"{dish_name} - Step {i} started at {get_time()} - Step {i}/{steps}")
         await asyncio.sleep(1)
     print(f"{dish_name} is ready at {get_time()}")
